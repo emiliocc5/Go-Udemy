@@ -1,5 +1,7 @@
 # Go-Udemy
-
+* Iterate over a slice
+  ![img.png](resources/Iterating over slice.png)
+  
 * Value Types vs Reference Types
 ![img.png](resources/img.png)
   
@@ -8,3 +10,15 @@
   
 * Map vs Struts
 ![img.png](resources/mapVsStruts.png)
+  
+* Interfaces notes
+  ![img.png](resources/interfaces notes.png)
+  
+
+
+
+
+# Some notes
+  * Go avoids any mentions of 'this' or 'self'
+  * We arent limited to only return two values in a fuction
+
