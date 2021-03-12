@@ -13,6 +13,8 @@
   
 * Interfaces notes
   ![img.png](resources/interfaces notes.png)
+  ![img.png](resources/interfacesImplicitly.png)
+  
   
 
 
