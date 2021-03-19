@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"time"
 )
 
 func main() {
@@ -19,22 +20,26 @@ func main() {
 	for _, link := range links {
 		go checkLink(link, c)
 	}
-	for i := 0; i < len(links); i++ {
-		fmt.Println(<-c)
+
+	/*for { //Infinite for loop
+		go checkLink(<-c, c)
+	}*/
+
+	for l := range c { //More understanding for loop, that waits a value in c, to execute the body
+		go func(link string) { //Function literal simil  Javascript Anonymus function
+			time.Sleep(5 * time.Second)
+			go checkLink(link, c)
+		}(l)
 	}
 }
 
 func checkLink(link string, c chan string) {
 	_, err := http.Get(link)
-	m := link
 	if err != nil {
-		//fmt.Println(link, " might be down")
-		//c <- "Might be down I think"
-		m += " might be down"
-		//return
+		fmt.Println(link, " might be down")
+		c <- link
+		return
 	}
-	//fmt.Println(link, " is up")
-	//c <- "Yeah its up"
-	m += " is up!"
-	c <- m
+	fmt.Println(link, " is up")
+	c <- link
 }
